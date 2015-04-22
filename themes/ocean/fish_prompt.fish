@@ -66,6 +66,12 @@ function fish_prompt
     echo -n -s $bg_cyan " $cwd " $normal
 
 
+    # Display virtual repository name, if available
+    if set -q VCSH_REPO_NAME
+        echo -n -s $bg_white $black " " "$VCSH_REPO_NAME" " /" $normal
+    end
+
+
     # Show git branch and dirty state
     if [ (_git_branch_name) ]
         set -l git_branch (_git_branch_name)
